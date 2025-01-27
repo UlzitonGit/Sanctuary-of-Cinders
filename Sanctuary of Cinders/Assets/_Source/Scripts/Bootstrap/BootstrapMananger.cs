@@ -14,7 +14,7 @@ public class BootstrapMananger : MonoBehaviour
     
     void Update()
     {
-        progressBar.fillAmount += Time.deltaTime / 2;
+        progressBar.fillAmount += Time.deltaTime / 3;
         if (progressBar.fillAmount == 1) SceneManager.LoadScene(1);
     }
 }
