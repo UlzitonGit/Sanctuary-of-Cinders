@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CuttingTreeMiniGame : MonoBehaviour
 {
-    [SerializeField] RectTransform zone; 
+    [SerializeField] private RectTransform _zone; 
 
     public TreeZone CurrentTree;
     public int Damage;
@@ -12,7 +12,7 @@ public class CuttingTreeMiniGame : MonoBehaviour
     private void Start()
     {
         CanAttack = true;
-        zone.localPosition = new Vector3(0, Random.Range(-300, 300), 0);
+        _zone.localPosition = new Vector3(0, Random.Range(-300, 300), 0);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -25,7 +25,7 @@ public class CuttingTreeMiniGame : MonoBehaviour
                 StartCoroutine(AttackReload());
                 print("Cut!");
                 CurrentTree.GetDamage(Damage);
-                zone.localPosition = new Vector3(0, Random.Range(-300, 300), 0);
+                _zone.localPosition = new Vector3(0, Random.Range(-300, 300), 0);
             }
            
         }

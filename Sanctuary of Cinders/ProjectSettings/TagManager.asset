@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Cut
+  - Forge
   layers:
   - Default
   - TransparentFX
