@@ -2,9 +2,14 @@ using Cinemachine;
 using StarterAssets;
 using UnityEngine;
 
-public class ForgeZone : MonoBehaviour
+public class BlacksmithZone : MonoBehaviour
 {
+    [SerializeField] private HammerPunch _hammer;
     [SerializeField] private Transform _forge;
+    [SerializeField] private GameObject _blackSmithStone;
+    [SerializeField] private GameObject _blackSmithSword;
+    [SerializeField] private GameObject _blackSmithHammer;
+    [SerializeField] private Transform _blacksmith;
     [SerializeField] private Transform _playerController;
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private ThirdPersonController _controller;
@@ -37,6 +42,17 @@ public class ForgeZone : MonoBehaviour
             _panel.SetActive(false);
         }
     }
+    public void StartBlacksmith()
+    {
+        //_isForging = false;
+        //_panel.SetActive(false);
+        _hammer.canAttack = true;
+        _panelBlackSmith.SetActive(false);
+        _camera.Follow = _blacksmith.transform;
+   
+        _blackSmithSword.SetActive(true);
+        _blackSmithHammer.SetActive(true);
+    }
     public void CloseForging()
     {
         _isForging = false;
@@ -45,5 +61,8 @@ public class ForgeZone : MonoBehaviour
         _controller.LockCameraPosition = false;
         _controller.enabled = true;
         _camera.Follow = _playerController.transform;
+       
+        _blackSmithSword.SetActive(false);
+        _blackSmithHammer.SetActive(false);
     }
 }

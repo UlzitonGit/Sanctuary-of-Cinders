@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Froging : MonoBehaviour
 {
-    [SerializeField] private ForgeZone _forgeMananger;
+    [SerializeField] private BlacksmithZone _forgeMananger;
     [SerializeField] private RectTransform _tempArrow;
     [SerializeField] private float _fallSpeed = 10;
     [SerializeField] private RectTransform _zone;
@@ -51,6 +51,6 @@ public class Froging : MonoBehaviour
       
         _forgeProgress = 0;
         _progressText.text = _forgeProgress.ToString();
-        _forgeMananger.CloseForging();
+        _forgeMananger.StartBlacksmith();
     }
 }
