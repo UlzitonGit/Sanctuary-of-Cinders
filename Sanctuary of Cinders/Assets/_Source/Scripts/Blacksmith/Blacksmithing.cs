@@ -9,7 +9,7 @@ public class Blacksmithing : MonoBehaviour
    
     [SerializeField] private GameObject _sucsessMenu;
     private float _forgeProgress = 0;
-    private int _hitsToMake = 3;
+    private int _hitsToMake = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +37,7 @@ public class Blacksmithing : MonoBehaviour
 
         _forgeProgress = 0;
        
-        _forgeMananger.CloseForging();
+        _forgeMananger.OpenSellMenu();
+        _hitsToMake = 5;
     }
 }
