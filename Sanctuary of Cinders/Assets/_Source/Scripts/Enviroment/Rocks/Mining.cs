@@ -58,7 +58,7 @@ public class Mining : MonoBehaviour
     }
     public void ButtonClicked()
     {
-        _mined += 10;
+        _mined += 5;
         StopAllCoroutines();
         RandomizeButton();
         _scoreText.text = "+" + _mined.ToString();

@@ -24,7 +24,7 @@ public class TreeZone : MonoBehaviour
         {
             _character.LockCameraPosition = false;
             _treeCuttingPanel.SetActive(false);
-            _resourcesMananger.AddWood(Random.Range(3, 6));
+            _resourcesMananger.AddWood(Random.Range(6, 10));
             _anim.SetTrigger("Cutted");
             _boxCollider.enabled = false;
             StartCoroutine(Raising());
