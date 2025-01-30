@@ -23,7 +23,7 @@ public class BlacksmithZone : MonoBehaviour
     [SerializeField] private int _woodCost = 10;
     [SerializeField] private TextMeshProUGUI _sellCostText;
 
-    [HideInInspector] public int SwordCost = 10;
+    [SerializeField] public int SwordCost = 100;
 
     private ResourcesMananger _mananger;
     private bool _isForging = false;
