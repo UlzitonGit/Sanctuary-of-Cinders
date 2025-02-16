@@ -41,6 +41,7 @@ public class Mining : MonoBehaviour
     }
     private void CloseGame()
     {
+        StopAllCoroutines();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _isStarted = false;
