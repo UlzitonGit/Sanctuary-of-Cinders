@@ -1,7 +1,9 @@
 using Cinemachine;
 using StarterAssets;
+using System.Resources;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class BlacksmithZone : MonoBehaviour
 {
@@ -12,8 +14,6 @@ public class BlacksmithZone : MonoBehaviour
     [SerializeField] private GameObject _blackSmithHammer;
     [SerializeField] private Transform _blacksmith;
     [SerializeField] private Transform _playerController;
-    [SerializeField] private CinemachineVirtualCamera _camera;
-    [SerializeField] private ThirdPersonController _controller;
     [SerializeField] private GameObject _panel;
     [SerializeField] private GameObject _panelBlackSmith;
     [SerializeField] private GameObject _sellPanel;
@@ -25,8 +25,18 @@ public class BlacksmithZone : MonoBehaviour
 
     [SerializeField] public int SwordCost = 100;
 
+    private CinemachineVirtualCamera _camera;
+    private ThirdPersonController _controller;
     private ResourcesMananger _mananger;
     private bool _isForging = false;
+    [Inject]
+    private void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
+    {
+        _controller = thirdPersonController;
+        _camera = camera;
+        _mananger = manager;
+        Debug.Log("binded");
+    }
     private void Start()
     {
         _mananger = FindAnyObjectByType<ResourcesMananger>();

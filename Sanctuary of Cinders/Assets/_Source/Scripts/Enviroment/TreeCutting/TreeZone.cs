@@ -1,13 +1,14 @@
 using System.Collections;
 using StarterAssets;
 using UnityEngine;
+using Zenject;
 
 public class TreeZone : MonoBehaviour
 {
     [SerializeField] private CuttingTreeMiniGame _miniGame;
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _checkPanel;
-    [SerializeField] private ThirdPersonController _character;
+    private ThirdPersonController _character;
     [SerializeField] private GameObject _treeCuttingPanel;
     private Animator _anim;
     private BoxCollider _boxCollider;
@@ -18,7 +19,13 @@ public class TreeZone : MonoBehaviour
     {
         _anim = GetComponentInChildren<Animator>();
         _boxCollider = GetComponent<BoxCollider>();
-        _resourcesMananger = FindAnyObjectByType<ResourcesMananger>();
+    }
+    [Inject]
+    private void Construct(ThirdPersonController thirdPersonController, ResourcesMananger mananger)
+    {
+        _resourcesMananger = mananger;
+        _character = thirdPersonController;
+        Debug.Log("binded");
     }
     public void GetDamage(int damage)
     {

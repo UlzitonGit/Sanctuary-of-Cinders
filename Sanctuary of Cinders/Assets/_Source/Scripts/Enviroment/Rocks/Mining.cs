@@ -3,6 +3,8 @@ using Cinemachine;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using Zenject;
 
 public class Mining : MonoBehaviour
 {
@@ -14,10 +16,12 @@ public class Mining : MonoBehaviour
     private int _mined;
     private bool _isStarted = false;
     private int _hp = 5;
-    private void Start()
+    [Inject]
+    private void Construct(ThirdPersonController thirdPersonController, ResourcesMananger mananger)
     {
-        _characterController = FindAnyObjectByType<ThirdPersonController>();
-        _mananger = FindAnyObjectByType<ResourcesMananger>();
+        _mananger = mananger;
+        _characterController = thirdPersonController;     
+        Debug.Log("binded");
     }
     private void Update()
     {
