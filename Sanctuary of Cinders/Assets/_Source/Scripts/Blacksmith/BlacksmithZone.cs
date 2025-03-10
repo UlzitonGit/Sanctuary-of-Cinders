@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class BlacksmithZone : MonoBehaviour
+public class BlacksmithZone : MiniGames
 {
     [SerializeField] private HammerPunch _hammer;
     [SerializeField] private Transform _forge;
@@ -25,21 +25,12 @@ public class BlacksmithZone : MonoBehaviour
 
     [SerializeField] public int SwordCost = 100;
 
-    private CinemachineVirtualCamera _camera;
-    private ThirdPersonController _controller;
-    private ResourcesMananger _mananger;
+ 
     private bool _isForging = false;
-    [Inject]
-    private void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
+
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
     {
-        _controller = thirdPersonController;
-        _camera = camera;
-        _mananger = manager;
-        Debug.Log("binded");
-    }
-    private void Start()
-    {
-        _mananger = FindAnyObjectByType<ResourcesMananger>();
+        base.Construct(thirdPersonController, camera, manager);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerStay(Collider other)

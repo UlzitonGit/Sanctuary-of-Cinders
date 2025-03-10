@@ -1,18 +1,17 @@
 using System.Collections;
+using Cinemachine;
 using StarterAssets;
 using UnityEngine;
 using Zenject;
 
-public class TreeZone : MonoBehaviour
+public class TreeZone : MiniGames
 {
     [SerializeField] private CuttingTreeMiniGame _miniGame;
     [SerializeField] private GameObject _gamePanel;
-    [SerializeField] private GameObject _checkPanel;
-    private ThirdPersonController _character;
+    [SerializeField] private GameObject _checkPanel;   
     [SerializeField] private GameObject _treeCuttingPanel;
     private Animator _anim;
-    private BoxCollider _boxCollider;
-    private ResourcesMananger _resourcesMananger;
+    private BoxCollider _boxCollider;  
     private int _treeHP = 10;
     private bool _isStarted = false;
     void Start()
@@ -21,23 +20,21 @@ public class TreeZone : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
     }
     [Inject]
-    private void Construct(ThirdPersonController thirdPersonController, ResourcesMananger mananger)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
     {
-        _resourcesMananger = mananger;
-        _character = thirdPersonController;
-        Debug.Log("binded");
+        base.Construct(thirdPersonController, camera, manager);
     }
     public void GetDamage(int damage)
     {
         _treeHP -= damage;
         if (_treeHP <= 0)
         {
-            _character.enabled = true;
-            _character.LockCameraPosition = false;
+            _controller.enabled = true;
+            _controller.LockCameraPosition = false;
             _treeCuttingPanel.SetActive(false);
             _gamePanel.SetActive(false);
             _isStarted = false;
-            _resourcesMananger.AddWood(Random.Range(6, 10));
+            _mananger.AddWood(Random.Range(6, 10));
             _anim.SetTrigger("Cutted");
             _boxCollider.enabled = false;
             StartCoroutine(Raising());
@@ -53,13 +50,13 @@ public class TreeZone : MonoBehaviour
             _checkPanel.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                _character.enabled = false;
+                _controller.enabled = false;
                 _isStarted = true;
                 _checkPanel.SetActive(false);               
                 _treeCuttingPanel.SetActive(true);
                 _miniGame.CanAttack = true;
                 _miniGame.CurrentTree = gameObject.GetComponent<TreeZone>();
-                _character.LockCameraPosition = true;
+                _controller.LockCameraPosition = true;
             }
         }
     }
@@ -67,8 +64,8 @@ public class TreeZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _character.enabled = true;
-            _character.LockCameraPosition = false;
+            _controller.enabled = true;
+            _controller.LockCameraPosition = false;
             _gamePanel.SetActive(false);
             _treeCuttingPanel.SetActive(false);
         }

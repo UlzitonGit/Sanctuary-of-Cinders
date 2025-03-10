@@ -6,22 +6,19 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using Zenject;
 
-public class Mining : MonoBehaviour
+public class Mining : MiniGames
 {
     [SerializeField] private GameObject _miniGamePanel;
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private RectTransform _mineButton;
-    private ThirdPersonController  _characterController;
-    private ResourcesMananger _mananger;
+
     private int _mined;
     private bool _isStarted = false;
     private int _hp = 5;
     [Inject]
-    private void Construct(ThirdPersonController thirdPersonController, ResourcesMananger mananger)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
     {
-        _mananger = mananger;
-        _characterController = thirdPersonController;     
-        Debug.Log("binded");
+        base.Construct(thirdPersonController, camera, manager);
     }
     private void Update()
     {
@@ -38,7 +35,7 @@ public class Mining : MonoBehaviour
             Cursor.visible = true;
             _isStarted = true;
             _miniGamePanel.SetActive(true);
-            _characterController.enabled = false;
+            _controller.enabled = false;
             RandomizeButton();
             
         }
@@ -50,7 +47,7 @@ public class Mining : MonoBehaviour
         Cursor.visible = false;
         _isStarted = false;
         _miniGamePanel.SetActive(false);
-        _characterController.enabled = true;
+        _controller.enabled = true;
         _mananger.AddIron(_mined);
         _mined = 0;
         _hp = 5;
