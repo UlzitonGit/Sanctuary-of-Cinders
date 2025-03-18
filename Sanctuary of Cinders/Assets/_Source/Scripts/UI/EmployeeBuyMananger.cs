@@ -26,4 +26,13 @@ public class EmployeeBuyMananger : MonoBehaviour
             _mananger.AddRice(cost * -1);
         }
     }
+    public void HireBlacksmith(int cost, GameObject employeePanel)
+    {
+        if (cost <= _mananger.Rice)
+        {
+            employeePanel.SetActive(false);
+            _employeeMananger.SpawnBlacksmith();
+            _mananger.AddRice(cost * -1);
+        }
+    }
 }

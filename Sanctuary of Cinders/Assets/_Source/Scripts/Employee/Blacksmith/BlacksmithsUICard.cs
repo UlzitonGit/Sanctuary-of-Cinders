@@ -4,6 +4,6 @@ public class BlacksmithsUICard : EmployeeInfo
 {
     public override void Hire()
     {
-        _buyMananger.HireMiner(_cost, gameObject);   
+        _buyMananger.HireBlacksmith(_cost, gameObject);   
     }
 }

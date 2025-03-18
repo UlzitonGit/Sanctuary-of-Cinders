@@ -12,6 +12,11 @@ public class EmployeeMananger : MonoBehaviour
     private int _woodcutterCount = 0;
     private int _maxWoodcutters = 3;
 
+    [SerializeField] private GameObject _blacksmithEmployee;
+    [SerializeField] private Transform[] _blacksmithSpawns;
+    private int _blacksmithCount = 0;
+    private int _maxblacksmith = 3;
+
     public void SpawnMiner()
     {
         if (_maxMiners == _minersCount) return;
@@ -23,5 +28,11 @@ public class EmployeeMananger : MonoBehaviour
         if (_maxWoodcutters == _woodcutterCount) return;
         Instantiate(_woodcutterEmployee, _woodcutterSpawns[_woodcutterCount].transform.position, Quaternion.identity);
         _woodcutterCount++;
+    }
+    public void SpawnBlacksmith()
+    {
+        if (_maxblacksmith == _blacksmithCount) return;
+        Instantiate(_blacksmithEmployee, _blacksmithSpawns[_blacksmithCount].transform.position, Quaternion.identity);
+        _blacksmithCount++;
     }
 }
