@@ -11,6 +11,7 @@ public class ResourcesMananger : MonoBehaviour
     [HideInInspector] public int Rice { get; private set; }
     private void Start()
     {
+        AddRice(10000);
     }
     public void AddWood(int wood)
     {

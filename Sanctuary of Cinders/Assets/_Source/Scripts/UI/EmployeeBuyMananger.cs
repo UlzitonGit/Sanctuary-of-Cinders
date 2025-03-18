@@ -17,4 +17,13 @@ public class EmployeeBuyMananger : MonoBehaviour
             _mananger.AddRice(cost * -1);
         }
     }
+    public void HireWoodcutter(int cost, GameObject employeePanel)
+    {
+        if (cost <= _mananger.Rice)
+        {
+            employeePanel.SetActive(false);
+            _employeeMananger.SpawnWoodCutter();
+            _mananger.AddRice(cost * -1);
+        }
+    }
 }

@@ -27,7 +27,7 @@ public class BlacksmithZone : MiniGames
 
  
     private bool _isForging = false;
-
+    [Inject]
     protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
     {
         base.Construct(thirdPersonController, camera, manager);
