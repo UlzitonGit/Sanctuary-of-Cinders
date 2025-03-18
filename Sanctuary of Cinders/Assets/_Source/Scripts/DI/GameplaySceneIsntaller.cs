@@ -8,6 +8,7 @@ public class GameplaySceneIsntaller : MonoInstaller
     [SerializeField] private ThirdPersonController _tpc;
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private ResourcesMananger _resourcesMananger;
+    [SerializeField] private EmployeeBuyMananger _employeeBuyMananger;
     public override void InstallBindings()
     {
         Container.Bind<ThirdPersonController>().FromInstance(_tpc)
@@ -16,5 +17,7 @@ public class GameplaySceneIsntaller : MonoInstaller
           .AsSingle();
         Container.Bind<ResourcesMananger>().FromInstance(_resourcesMananger)
          .AsSingle();
+        Container.Bind<EmployeeBuyMananger>().FromInstance(_employeeBuyMananger)
+        .AsSingle();
     }
 }
