@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,13 @@ public class ResourcesMananger : MonoBehaviour
     [HideInInspector] public int Rice { get; private set; }
     private void Start()
     {
-        AddRice(10000);
+        ShowResources();
+    }
+    private void ShowResources()
+    {
+        _woodText.text = Wood.ToString();
+        _ironText.text = Iron.ToString();
+        _riceText.text = Rice.ToString();
     }
     public void AddWood(int wood)
     {
@@ -28,4 +35,5 @@ public class ResourcesMananger : MonoBehaviour
         Rice += rice;
         _riceText.text = Rice.ToString();
     }
+
 }
