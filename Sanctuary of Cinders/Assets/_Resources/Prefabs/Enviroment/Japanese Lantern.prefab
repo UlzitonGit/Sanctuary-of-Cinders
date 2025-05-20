@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4470285179517711460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.604}
+  m_LocalPosition: {x: 0, y: 1.999, z: -0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -148,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8528592244557683363}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5969986}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -1.999, z: 0.046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4981,7 +4981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.367
+      value: 23.108
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4989,19 +4989,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5015,6 +5015,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: bfb171474caf46f478b00173bef16157, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2685670233453667335, guid: 9762a5d0cd491bd4cbd5103820622458, type: 3}
     - target: {fileID: 919132149155446097, guid: bfb171474caf46f478b00173bef16157, type: 3}
       propertyPath: m_Name
       value: Japanese Lantern
@@ -5058,8 +5062,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8033828, y: 0.8033828, z: 2.3709567}
-  m_Center: {x: 0, y: 0, z: 0.77278817}
+  m_Size: {x: 0.80338305, y: 2.130279, z: 0.8129754}
+  m_Center: {x: 0, y: -0.24716103, z: -0.006203372}
 --- !u!4 &5415696906309745552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfb171474caf46f478b00173bef16157, type: 3}
