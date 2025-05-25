@@ -7,12 +7,11 @@ public class EmployeeBuyMananger : MonoBehaviour
     [SerializeField] private ResourcesMananger _mananger;
     [SerializeField] private EmployeeMananger _employeeMananger;
    
-
+    
     public void HireMiner(int cost, GameObject employeePanel)
     {
         if(cost <= _mananger.Rice)
         {
-            employeePanel.SetActive(false);
             _employeeMananger.SpawnMiner();
             _mananger.AddRice(cost * -1);
         }
@@ -21,7 +20,6 @@ public class EmployeeBuyMananger : MonoBehaviour
     {
         if (cost <= _mananger.Rice)
         {
-            employeePanel.SetActive(false);
             _employeeMananger.SpawnWoodCutter();
             _mananger.AddRice(cost * -1);
         }
@@ -30,8 +28,15 @@ public class EmployeeBuyMananger : MonoBehaviour
     {
         if (cost <= _mananger.Rice)
         {
-            employeePanel.SetActive(false);
             _employeeMananger.SpawnBlacksmith();
+            _mananger.AddRice(cost * -1);
+        }
+    }
+    public void HireSamurai(int cost, GameObject employeePanel)
+    {
+        if (cost <= _mananger.Rice)
+        {
+            _mananger.AddSamurai(1);
             _mananger.AddRice(cost * -1);
         }
     }

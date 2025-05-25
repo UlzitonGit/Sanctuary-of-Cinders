@@ -28,6 +28,8 @@ public class SavesMananger : MonoBehaviour
         _resources.AddIron(data.Iron);
         _resources.AddWood(data.Wood);
         _resources.AddRice(data.Rice);
+        _resources.AddSamurai(data.Samurai);
+        _resources.AddCostMultiply(data.CostMultyply);
         _employee.RestoreEmployee(data.BlackSmiths, data.Miners, data.Woodcutters);
     }
     IEnumerator SaveCycle()

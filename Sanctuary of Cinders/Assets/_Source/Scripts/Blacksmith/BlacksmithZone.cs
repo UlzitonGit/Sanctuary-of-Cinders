@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using StarterAssets;
 using System.Resources;
@@ -25,13 +26,19 @@ public class BlacksmithZone : MiniGames
 
     [SerializeField] public int SwordCost = 100;
 
- 
+    
     private bool _isForging = false;
     [Inject]
     protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
     {
         base.Construct(thirdPersonController, camera, manager);
     }
+
+    private void Start()
+    {
+        SwordCost = 100 * _mananger.CostMultiply;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerStay(Collider other)
     {
@@ -88,6 +95,7 @@ public class BlacksmithZone : MiniGames
     }
     public void OpenSellMenu()
     {
+        SwordCost = 100 * _mananger.CostMultiply;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
