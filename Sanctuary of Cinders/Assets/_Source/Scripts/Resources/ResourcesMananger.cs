@@ -31,7 +31,7 @@ public class ResourcesMananger : MonoBehaviour
         _woodText.text = _wood.ToString();
         _ironText.text = _iron.ToString();
         _riceText.text = _rice.ToString();
-        _samuraiText.text = _samurais.ToString();
+        _samuraiText.text = _samurais.ToString() + " hired";
     }
     public void AddWood(int wood)
     {
@@ -55,7 +55,7 @@ public class ResourcesMananger : MonoBehaviour
     public void AddSamurai(int samurai)
     {
         _samurais += samurai;
-        _samuraiText.text = _samurais.ToString();
+        _samuraiText.text = _samurais.ToString() + " hired";
     }
 
     public void AddCostMultiply(int costMultiply)
