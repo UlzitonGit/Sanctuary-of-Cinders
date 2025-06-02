@@ -37,6 +37,7 @@ public class TreeZone : MiniGames
             _mananger.AddWood(Random.Range(6, 10));
             _anim.SetTrigger("Cutted");
             _boxCollider.enabled = false;
+            _controller.SetAnim("Cutting", false);
             StartCoroutine(Raising());
             //Destroy(gameObject);
         }
@@ -52,6 +53,8 @@ public class TreeZone : MiniGames
             {
                 _controller.enabled = false;
                 _isStarted = true;
+                _controller.LookAtTarget(transform.position);
+                _controller.SetAnim("Cutting", true);
                 _checkPanel.SetActive(false);               
                 _treeCuttingPanel.SetActive(true);
                 _miniGame.CanAttack = true;
@@ -64,6 +67,7 @@ public class TreeZone : MiniGames
     {
         if (other.CompareTag("Player"))
         {
+            _controller.SetAnim("Cutting", false);
             _controller.enabled = true;
             _controller.LockCameraPosition = false;
             _gamePanel.SetActive(false);

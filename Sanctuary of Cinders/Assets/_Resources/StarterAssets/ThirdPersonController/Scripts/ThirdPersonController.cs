@@ -389,5 +389,13 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+        public void SetAnim(string name, bool status)
+        {
+            _animator.SetBool(name, status);
+        }
+        public void LookAtTarget(Vector3 target)
+        {
+            transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
+        }
     }
 }
