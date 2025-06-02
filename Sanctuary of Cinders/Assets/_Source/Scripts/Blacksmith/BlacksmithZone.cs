@@ -20,6 +20,7 @@ public class BlacksmithZone : MiniGames
     [SerializeField] private GameObject _sellPanel;
     [SerializeField] private TextMeshProUGUI _woodCostText;
     [SerializeField] private TextMeshProUGUI _ironCostText;
+    [SerializeField] private Transform _playerPos;
     [SerializeField] private int _ironCost = 5;
     [SerializeField] private int _woodCost = 10;
     [SerializeField] private TextMeshProUGUI _sellCostText;
@@ -56,9 +57,12 @@ public class BlacksmithZone : MiniGames
                 _panelBlackSmith.SetActive(true);
                 _controller.LockCameraPosition = true;
                 _controller.enabled = false;
-                _camera.Follow =_forge.transform;
+                _camera.Follow = _forge.transform;
+                _controller.transform.position = _playerPos.position;
+                _controller.LookAtTarget(_blacksmith.position);
+                _controller.SetAnim("Forging", true);
             }
-          
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -83,12 +87,12 @@ public class BlacksmithZone : MiniGames
     public void CloseForging()
     {
         _isForging = false;
-        _panel.SetActive(true);
+        _panel.SetActive(false);
         _panelBlackSmith.SetActive(false);
         _controller.LockCameraPosition = false;
         _controller.enabled = true;
         _camera.Follow = _playerController.transform;
-       
+        _controller.SetAnim("Forging", false);
         _blackSmithSword.SetActive(false);
         _blackSmithHammer.SetActive(false);
        
