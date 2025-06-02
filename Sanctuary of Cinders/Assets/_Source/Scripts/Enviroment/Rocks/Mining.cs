@@ -11,7 +11,7 @@ public class Mining : MiniGames
     [SerializeField] private GameObject _miniGamePanel;
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private RectTransform _mineButton;
-
+    [SerializeField] private GameObject _panel;
     private int _mined;
     private bool _isStarted = false;
     private int _hp = 5;
@@ -29,15 +29,27 @@ public class Mining : MiniGames
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.E) && _isStarted == false)
+        if (other.CompareTag("Player") )
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            _isStarted = true;
-            _miniGamePanel.SetActive(true);
-            _controller.enabled = false;
-            RandomizeButton();
-            
+            _panel.SetActive(true);
+            if(Input.GetKey(KeyCode.E) && _isStarted == false)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                _isStarted = true;
+                _miniGamePanel.SetActive(true);
+                _controller.SetAnim("Mining", true);
+                _controller.LookAtTarget(transform.position);
+                _controller.enabled = false;
+                RandomizeButton();
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _panel.SetActive(false);
         }
     }
     private void CloseGame()
@@ -48,6 +60,8 @@ public class Mining : MiniGames
         _isStarted = false;
         _miniGamePanel.SetActive(false);
         _controller.enabled = true;
+        _controller.SetAnim("Mining", false);
+        _miniGamePanel.SetActive(false);
         _mananger.AddIron(_mined);
         _mined = 0;
         _hp = 5;
