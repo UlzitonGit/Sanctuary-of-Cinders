@@ -17,7 +17,7 @@ public class HammerPunch : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false ;
-        _hammerAnimation.SetTrigger("Punch");
+        _hammerAnimation.SetTrigger("HammerPunch");
         yield return new WaitForSeconds(1.2f);
         canAttack = true ;
     }

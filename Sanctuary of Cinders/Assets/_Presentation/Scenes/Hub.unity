@@ -8925,7 +8925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &255937013
 Transform:
   m_ObjectHideFlags: 0
@@ -49045,7 +49045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &666579759
 Transform:
   m_ObjectHideFlags: 0
@@ -63751,7 +63751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86ebf47e0693b3340b3b4d216561cb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hammerAnimation: {fileID: 893611513}
+  _hammerAnimation: {fileID: 1536404734}
   canAttack: 1
 --- !u!1 &908882454
 GameObject:
@@ -117995,6 +117995,11 @@ MonoBehaviour:
 --- !u!4 &1536404733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+  m_PrefabInstance: {fileID: 1536404730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1536404734 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 1536404730}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &1539762131
