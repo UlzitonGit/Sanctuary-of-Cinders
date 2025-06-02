@@ -36,6 +36,7 @@ public class EmployeeMananger : MonoBehaviour
         Instantiate(_minerEmployee, _minerSpawns[_minersCount].transform.position, Quaternion.identity);
         _minersCount++;
         ShowEmployeeCountText();
+     
     }
     public void SpawnWoodCutter()
     {
@@ -43,6 +44,7 @@ public class EmployeeMananger : MonoBehaviour
         Instantiate(_woodcutterEmployee, _woodcutterSpawns[_woodcutterCount].transform.position, Quaternion.identity);
         _woodcutterCount++;
         ShowEmployeeCountText();
+     
     }
     public void SpawnBlacksmith()
     {
@@ -69,6 +71,7 @@ public class EmployeeMananger : MonoBehaviour
         _minersCount = miners;
         _blacksmithCount = blacksmiths;
         ShowEmployeeCountText();
+  
     }
 
     public bool CheckMiners()

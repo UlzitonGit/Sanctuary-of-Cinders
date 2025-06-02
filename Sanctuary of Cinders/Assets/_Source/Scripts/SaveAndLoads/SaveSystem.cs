@@ -5,13 +5,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
     private static string _pathDest = "data.txt";
-    public static void SaveData(ResourcesMananger resources, EmployeeMananger employee)
+    public static void SaveData(ResourcesMananger resources, EmployeeMananger employee, UpgradeMananger upgradeMananger)
     {
         BinaryFormatter bf = new BinaryFormatter();
         string path = Application.persistentDataPath + _pathDest;
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        ResourcesData data = new ResourcesData(resources, employee);
+        ResourcesData data = new ResourcesData(resources, employee, upgradeMananger);
 
         bf.Serialize(stream, data);
         stream.Close();

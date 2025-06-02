@@ -10,6 +10,7 @@ public class GameplaySceneIsntaller : MonoInstaller
     [SerializeField] private ResourcesMananger _resourcesMananger;
     [SerializeField] private EmployeeBuyMananger _employeeBuyMananger;
     [SerializeField] private EmployeeMananger _employeeMananger;
+    [SerializeField] private UpgradeMananger _upgradeMananger;
     public override void InstallBindings()
     {
         Container.Bind<ThirdPersonController>().FromInstance(_tpc)
@@ -22,5 +23,8 @@ public class GameplaySceneIsntaller : MonoInstaller
             .AsSingle();
         Container.Bind<EmployeeMananger>().FromInstance(_employeeMananger)
             .AsSingle();
+        Container.Bind<UpgradeMananger>().FromInstance(_upgradeMananger)
+         .AsSingle();
     }
+
 }

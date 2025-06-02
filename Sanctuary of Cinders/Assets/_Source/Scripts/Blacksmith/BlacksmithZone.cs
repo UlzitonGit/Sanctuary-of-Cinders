@@ -99,7 +99,9 @@ public class BlacksmithZone : MiniGames
     }
     public void OpenSellMenu()
     {
-        SwordCost = 100 * _mananger.CostMultiply;
+        int costM = _mananger.CostMultiply;
+        if (costM == 0) costM = 1;
+        SwordCost = 100 * costM;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
