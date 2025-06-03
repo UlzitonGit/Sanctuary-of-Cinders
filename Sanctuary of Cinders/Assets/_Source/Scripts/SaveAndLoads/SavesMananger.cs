@@ -17,7 +17,9 @@ public class SavesMananger : MonoBehaviour
     }
     private void Start()
     {
-        LoadData();
+        //SaveSystem.Delete();
+        if(SaveSystem.HasFile()) LoadData();
+
         StartCoroutine(SaveCycle());
     }
     private void SaveData()

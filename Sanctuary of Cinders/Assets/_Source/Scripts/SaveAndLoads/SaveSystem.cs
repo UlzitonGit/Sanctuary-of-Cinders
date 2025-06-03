@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public static class SaveSystem
 {
     private static string _pathDest = "data.txt";
+
     public static void SaveData(ResourcesMananger resources, EmployeeMananger employee, UpgradeMananger upgradeMananger)
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -16,6 +18,27 @@ public static class SaveSystem
         bf.Serialize(stream, data);
         stream.Close();
         Debug.Log("saved");
+    }
+    private static string SaveFilePath
+    {
+        get { return Application.persistentDataPath + _pathDest; }
+    }
+    public static bool HasFile()
+    {
+        string path = Application.persistentDataPath + _pathDest;
+        return File.Exists(path);
+    }
+
+    public static void Delete()
+    {
+        try
+        {
+            File.Delete(SaveFilePath);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
     public static ResourcesData LoadResoures()
     {
