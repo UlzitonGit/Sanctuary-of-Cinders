@@ -131,10 +131,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8259709983614772436, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803104ad136498542b9890e16a146ca0, type: 2}
+    - target: {fileID: -152485489178146131, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c1b92e7ffc60cc4ca580a7a8f18a865, type: 2}
     - target: {fileID: 919132149155446097, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
       propertyPath: m_Name
       value: Great Sword Slash (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1111310870344085616, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803104ad136498542b9890e16a146ca0, type: 2}
+    - target: {fileID: 1960948904593349336, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803104ad136498542b9890e16a146ca0, type: 2}
+    - target: {fileID: 2201674020636920824, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 803104ad136498542b9890e16a146ca0, type: 2}
+    - target: {fileID: 4504973843737856032, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c1b92e7ffc60cc4ca580a7a8f18a865, type: 2}
+    - target: {fileID: 5287906477693955905, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c1b92e7ffc60cc4ca580a7a8f18a865, type: 2}
     - target: {fileID: 5866666021909216657, guid: 50cf8385c00ad9d44a46088fb0e79bbd, type: 3}
       propertyPath: m_Controller
       value: 
