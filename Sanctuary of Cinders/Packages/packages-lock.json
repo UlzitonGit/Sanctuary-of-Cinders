@@ -7,7 +7,7 @@
       "dependencies": {}
     },
     "com.unity.ai.navigation": {
-      "version": "2.0.5",
+      "version": "2.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -162,8 +162,8 @@
       }
     },
     "com.unity.searcher": {
-      "version": "4.9.2",
-      "depth": 0,
+      "version": "4.9.3",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -174,7 +174,7 @@
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.3",
-        "com.unity.searcher": "4.9.2"
+        "com.unity.searcher": "4.9.3"
       }
     },
     "com.unity.sysroot": {
