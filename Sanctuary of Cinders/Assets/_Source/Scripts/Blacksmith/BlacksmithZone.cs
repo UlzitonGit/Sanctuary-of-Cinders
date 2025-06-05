@@ -66,20 +66,12 @@ public class BlacksmithZone : MiniGames
 
         }
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _tutorialMananger.ShowTutorial();
-        }
-    }
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
+            _tutorialMananger.ShowTutorial();
             _panel.SetActive(false);
         }
     }
