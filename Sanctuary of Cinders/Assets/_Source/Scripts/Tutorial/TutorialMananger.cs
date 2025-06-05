@@ -12,6 +12,7 @@ public class TutorialMananger : MonoBehaviour
     private int _currentTutorialPhase;
     public void HideTutorial()
     {
+        Debug.LogWarning("HideTutorial");
         _tutorial.SetActive(false);
     }
 

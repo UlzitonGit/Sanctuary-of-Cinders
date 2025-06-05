@@ -45,12 +45,12 @@ public class BlacksmithZone : MiniGames
     {
         if (other.CompareTag("Player") && !_isForging)
         {
+            _tutorialMananger.HideTutorial();
             _panel.SetActive(true);
             _woodCostText.text = _woodCost.ToString();
             _ironCostText.text = _ironCost.ToString();
             if (Input.GetKey(KeyCode.E) && _mananger.Wood >= _woodCost && _mananger.Iron >= _ironCost)
             {
-                _tutorialMananger.HideTutorial();
                 _mananger.AddIron(_ironCost * -1);
                 _mananger.AddWood(_woodCost * -1);
                 _isForging = true;
@@ -66,6 +66,15 @@ public class BlacksmithZone : MiniGames
 
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _tutorialMananger.ShowTutorial();
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

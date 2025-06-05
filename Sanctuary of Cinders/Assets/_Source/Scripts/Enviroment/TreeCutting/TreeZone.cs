@@ -50,11 +50,11 @@ public class TreeZone : MiniGames
     {
         if (other.CompareTag("Player") && !_isStarted)
         {         
+            _tutorialMananger.HideTutorial();
             _gamePanel.SetActive(true);
             _checkPanel.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
-                _tutorialMananger.HideTutorial();
                 _controller.enabled = false;
                 _isStarted = true;
                 _controller.LookAtTarget(transform.position);
@@ -69,6 +69,7 @@ public class TreeZone : MiniGames
     }
     private void OnTriggerExit(Collider other)
     {
+        _tutorialMananger.ShowTutorial();
         if (other.CompareTag("Player"))
         {
             _controller.SetAnim("Cutting", false);

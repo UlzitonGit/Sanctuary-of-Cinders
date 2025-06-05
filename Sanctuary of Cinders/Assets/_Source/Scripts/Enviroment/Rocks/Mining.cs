@@ -31,13 +31,13 @@ public class Mining : MiniGames
     {
         if (other.CompareTag("Player") )
         {
+            _tutorialMananger.HideTutorial();
             _panel.SetActive(true);
             if(Input.GetKey(KeyCode.E) && _isStarted == false)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 _isStarted = true;
-                _tutorialMananger.HideTutorial();
                 _miniGamePanel.SetActive(true);
                 _controller.SetAnim("Mining", true);
                 _controller.LookAtTarget(transform.position);
@@ -50,6 +50,7 @@ public class Mining : MiniGames
     {
         if (other.CompareTag("Player"))
         {
+            _tutorialMananger.ShowTutorial();
             _panel.SetActive(false);
         }
     }
