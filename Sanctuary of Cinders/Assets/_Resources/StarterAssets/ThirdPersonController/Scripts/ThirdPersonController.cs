@@ -1,4 +1,7 @@
-﻿ using UnityEngine;
+﻿ using System;
+ using UnityEngine;
+ using Zenject;
+ using Random = UnityEngine.Random;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -65,7 +68,7 @@ namespace StarterAssets
 
         [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
-
+    
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -30.0f;
 
@@ -105,7 +108,7 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
-
+        private TutorialMananger _tutorialMananger;
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
@@ -122,7 +125,11 @@ namespace StarterAssets
             }
         }
 
-
+        [Inject]
+        protected void Construct(TutorialMananger tutorialMananger)
+        {
+            _tutorialMananger = tutorialMananger;
+        }
         private void Awake()
         {
             // get a reference to our main camera
@@ -271,7 +278,7 @@ namespace StarterAssets
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+            
             // update animator if using character
             if (_hasAnimator)
             {
@@ -377,6 +384,14 @@ namespace StarterAssets
         public void LookAtTarget(Vector3 target)
         {
             transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("WalkTutorial"))
+            {
+                _tutorialMananger.NextTutorialPhase(1);
+            }
         }
     }
 }

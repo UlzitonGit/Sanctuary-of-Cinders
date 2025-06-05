@@ -8,6 +8,8 @@ TagManager:
   - Cut
   - Forge
   - Blacksmith
+  - Tree
+  - WalkTutorial
   layers:
   - Default
   - TransparentFX

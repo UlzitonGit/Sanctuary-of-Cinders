@@ -30,9 +30,9 @@ public class BlacksmithZone : MiniGames
     
     private bool _isForging = false;
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger)
     {
-        base.Construct(thirdPersonController, camera, manager);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
     }
 
     private void Start()
@@ -50,6 +50,7 @@ public class BlacksmithZone : MiniGames
             _ironCostText.text = _ironCost.ToString();
             if (Input.GetKey(KeyCode.E) && _mananger.Wood >= _woodCost && _mananger.Iron >= _ironCost)
             {
+                _tutorialMananger.HideTutorial();
                 _mananger.AddIron(_ironCost * -1);
                 _mananger.AddWood(_woodCost * -1);
                 _isForging = true;
@@ -95,11 +96,14 @@ public class BlacksmithZone : MiniGames
         _controller.SetAnim("Forging", false);
         _blackSmithSword.SetActive(false);
         _blackSmithHammer.SetActive(false);
+        
        
     }
     public void OpenSellMenu()
     {
         SellSword();
+        _tutorialMananger.ShowTutorial();
+        _tutorialMananger.NextTutorialPhase(4);
         return;
         int costM = _mananger.CostMultiply;
         if (costM == 0) costM = 1;

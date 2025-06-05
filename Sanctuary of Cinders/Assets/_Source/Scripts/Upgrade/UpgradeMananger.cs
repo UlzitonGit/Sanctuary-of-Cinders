@@ -40,7 +40,7 @@ public class UpgradeMananger : MonoBehaviour
             print("Upgrade");
             MinersMultiply += mult;
             MinersUps++;
-            _resources.AddRice(MinersUps * _basicCost);
+            _resources.AddRice(MinersUps * _basicCost * -1);
             UpdateUI();
 
         }
@@ -52,7 +52,7 @@ public class UpgradeMananger : MonoBehaviour
             print("Upgrade");
             BlackSmithsMultiply -= mult;
             BlackUps++;
-            _resources.AddRice(BlackUps * _basicCost);
+            _resources.AddRice(BlackUps * _basicCost * -1);
             UpdateUI();
         }
     }
@@ -63,7 +63,7 @@ public class UpgradeMananger : MonoBehaviour
             print("Upgrade");
             WoodcuttersMultiply += mult;
             WoodUps++;
-            _resources.AddRice(WoodUps * _basicCost);
+            _resources.AddRice(WoodUps * _basicCost * -1);
             UpdateUI();
         }
     }

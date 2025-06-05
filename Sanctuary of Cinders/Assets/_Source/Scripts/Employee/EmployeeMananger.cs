@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class EmployeeMananger : MonoBehaviour
 {
@@ -23,18 +24,26 @@ public class EmployeeMananger : MonoBehaviour
     private int _blacksmithCount = 0;
     private int _maxblacksmith = 6;
     public int BlacksmithCount => _blacksmithCount;
+    private TutorialMananger _tutorialMananger;
 
+    [Inject]
+    protected void Construct(TutorialMananger tutorialMananger)
+    {
+        _tutorialMananger = tutorialMananger;
+    }
     private void ShowEmployeeCountText()
     {
-        _blacksmithCountText.text = _blacksmithCount.ToString() + "/" + _maxblacksmith.ToString() + " Hired";
-        _minersCountText.text = _minersCount.ToString() + "/" + _maxMiners.ToString() + " Hired";
-        _cuttersCountText.text = _woodcutterCount.ToString() + "/" + _maxWoodcutters.ToString() + " Hired";
+        _blacksmithCountText.text = _blacksmithCount.ToString() + "/" + _maxblacksmith.ToString() + " Нанято";
+        _minersCountText.text = _minersCount.ToString() + "/" + _maxMiners.ToString() + " Нанято";
+        _cuttersCountText.text = _woodcutterCount.ToString() + "/" + _maxWoodcutters.ToString() + " Нанято";
     }
     public void SpawnMiner()
     {
         if (_maxMiners == _minersCount) return;
         _minerSpawns[_minersCount].SetActive(true);
         _minersCount++;
+        _tutorialMananger.HideTutorial();
+        _tutorialMananger.NextTutorialPhase(5);
         ShowEmployeeCountText();
      
     }
@@ -42,6 +51,7 @@ public class EmployeeMananger : MonoBehaviour
     {
         if (_maxWoodcutters == _woodcutterCount) return;
         _woodcutterSpawns[_woodcutterCount].SetActive(true);
+        _tutorialMananger.NextTutorialPhase(5);
         _woodcutterCount++;
         ShowEmployeeCountText();
      
@@ -50,6 +60,7 @@ public class EmployeeMananger : MonoBehaviour
     {
         if (_maxblacksmith == _blacksmithCount) return;
         _blacksmithSpawns[_blacksmithCount].SetActive(true);
+        _tutorialMananger.NextTutorialPhase(5);
         _blacksmithCount++;
         ShowEmployeeCountText();
     }

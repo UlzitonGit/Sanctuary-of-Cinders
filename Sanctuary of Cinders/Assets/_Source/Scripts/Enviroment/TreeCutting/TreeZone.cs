@@ -20,25 +20,27 @@ public class TreeZone : MiniGames
         _boxCollider = GetComponent<BoxCollider>();
     }
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager, TutorialMananger tutorialMananger)
     {
-        base.Construct(thirdPersonController, camera, manager);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
     }
     public void GetDamage(int damage)
     {
         _treeHP -= damage;
         if (_treeHP <= 0)
         {
+            _tutorialMananger.NextTutorialPhase(2);
             _controller.enabled = true;
             _controller.LockCameraPosition = false;
             _treeCuttingPanel.SetActive(false);
             _gamePanel.SetActive(false);
             _isStarted = false;
-            _mananger.AddWood(Random.Range(6, 10));
+            _mananger.AddWood(15);
             _anim.SetTrigger("Cutted");
             _boxCollider.enabled = false;
             _controller.SetAnim("Cutting", false);
             StartCoroutine(Raising());
+            _tutorialMananger.ShowTutorial();
             //Destroy(gameObject);
         }
     }
@@ -51,6 +53,7 @@ public class TreeZone : MiniGames
             _checkPanel.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
+                _tutorialMananger.HideTutorial();
                 _controller.enabled = false;
                 _isStarted = true;
                 _controller.LookAtTarget(transform.position);

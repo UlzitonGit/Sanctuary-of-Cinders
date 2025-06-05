@@ -16,9 +16,9 @@ public class Mining : MiniGames
     private bool _isStarted = false;
     private int _hp = 5;
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger)
     {
-        base.Construct(thirdPersonController, camera, manager);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
     }
     private void Update()
     {
@@ -37,6 +37,7 @@ public class Mining : MiniGames
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 _isStarted = true;
+                _tutorialMananger.HideTutorial();
                 _miniGamePanel.SetActive(true);
                 _controller.SetAnim("Mining", true);
                 _controller.LookAtTarget(transform.position);
@@ -57,8 +58,10 @@ public class Mining : MiniGames
         StopAllCoroutines();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        _tutorialMananger.NextTutorialPhase(3);
         _isStarted = false;
         _miniGamePanel.SetActive(false);
+        _tutorialMananger.ShowTutorial();
         _controller.enabled = true;
         _controller.SetAnim("Mining", false);
         _miniGamePanel.SetActive(false);
@@ -74,7 +77,7 @@ public class Mining : MiniGames
     }
     public void ButtonClicked()
     {
-        _mined += 5;
+        _mined += 10;
         StopAllCoroutines();
         RandomizeButton();
         _scoreText.text = "+" + _mined.ToString();

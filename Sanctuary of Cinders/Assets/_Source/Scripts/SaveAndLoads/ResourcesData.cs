@@ -16,7 +16,8 @@ public class ResourcesData
     public int WoodUps { get; private set; }
     public int BlackUps { get; private set; }
     public int MinersUps { get; private set; }
-    public ResourcesData(ResourcesMananger resources, EmployeeMananger employee, UpgradeMananger upgradeMananger)
+    public bool Tutorial { get; private set; }
+    public ResourcesData(ResourcesMananger resources, EmployeeMananger employee, UpgradeMananger upgradeMananger, TutorialMananger tutorialMananger)
     {
         Rice = resources.Rice;
         Iron = resources.Iron;
@@ -32,5 +33,6 @@ public class ResourcesData
         WoodUps = upgradeMananger.WoodUps;
         BlackUps = upgradeMananger.BlackUps;
         MinersUps = upgradeMananger.MinersUps;
+        Tutorial = tutorialMananger.IsEndTutorial;
     } 
 }
