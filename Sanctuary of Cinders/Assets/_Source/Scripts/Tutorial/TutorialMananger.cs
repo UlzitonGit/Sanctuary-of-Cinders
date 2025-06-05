@@ -43,7 +43,7 @@ public class TutorialMananger : MonoBehaviour
             return;
         }
         if (phase < _currentTutorialPhase) return;
-        if(phase == 4 && _currentTutorialPhase != 4) _resourcesMananger.AddRice(300); 
+        if(phase == 4 && _currentTutorialPhase != 4) _resourcesMananger.AddRice(2000); 
         _currentTutorialPhase = phase;
         _tutorialPanels[phase - 1].SetActive(false);
         _tutorialPanels[phase].SetActive(true);

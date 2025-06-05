@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _woodToMine: 5
-  _delay: 2
+  _delay: 5
 --- !u!1001 &1057337951643282150
 PrefabInstance:
   m_ObjectHideFlags: 0

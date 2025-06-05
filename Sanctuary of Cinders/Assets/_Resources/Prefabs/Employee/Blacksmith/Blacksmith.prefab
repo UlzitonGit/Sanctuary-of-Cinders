@@ -69,10 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e51e292e3354641b5300422969f1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ironCost: 50
+  _ironCost: 100
   _woodCost: 50
   _swordCost: 100
-  _delay: 5
+  _delay: 10
 --- !u!1001 &1314807913016846179
 PrefabInstance:
   m_ObjectHideFlags: 0
