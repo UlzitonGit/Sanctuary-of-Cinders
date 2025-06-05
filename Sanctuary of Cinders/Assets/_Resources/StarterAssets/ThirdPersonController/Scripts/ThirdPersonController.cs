@@ -104,6 +104,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
+        private AudioSource _audioSource;
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
@@ -141,6 +142,7 @@ namespace StarterAssets
 
         private void Start()
         {
+            _audioSource = GetComponent<AudioSource>();
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -365,7 +367,7 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    _audioSource.PlayOneShot(FootstepAudioClips[index]);
                 }
             }
         }

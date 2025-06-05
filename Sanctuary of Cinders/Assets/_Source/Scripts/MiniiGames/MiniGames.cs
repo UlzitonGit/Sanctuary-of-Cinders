@@ -9,12 +9,14 @@ public class MiniGames : MonoBehaviour
     protected ThirdPersonController _controller;
     protected ResourcesMananger _mananger;
     protected TutorialMananger _tutorialMananger;
-    virtual protected void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager, TutorialMananger tutorialMananger)
+    protected SoundsPlayer _soundMananger;
+    virtual protected void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager, TutorialMananger tutorialMananger, SoundsPlayer soundMananger)
     {
         _controller = thirdPersonController;
         _camera = camera;
         _tutorialMananger = tutorialMananger;
         _mananger = manager;
+        _soundMananger = soundMananger;
         
         Debug.Log("binded");
     }

@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using Zenject;
 public class ResourcesMananger : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _woodText;
@@ -16,11 +16,18 @@ public class ResourcesMananger : MonoBehaviour
     private int _samurais;
     private int _costMultiply = 1;
     
+    private SoundsPlayer _soundsPlayer;
+    
     public int CostMultiply => _costMultiply;
     public int Rice => _rice;
     public int Wood => _wood;
     public int Iron => _iron;
     public int Samurai => _samurais;
+    [Inject]
+    protected void Construct(SoundsPlayer soundMananger)
+    {
+        _soundsPlayer = soundMananger;
+    }
     private void Start()
     {
         ShowResources();
@@ -49,7 +56,11 @@ public class ResourcesMananger : MonoBehaviour
         if(_costMultiply == 0) _costMultiply = 1;
         print(_costMultiply);
         if(rice > 0)   _rice += rice * _costMultiply;
-        else _rice += rice;
+        else
+        {
+            _rice += rice;
+        }
+        _soundsPlayer.PlaySell();
         _riceText.text = _rice.ToString();
     }
 

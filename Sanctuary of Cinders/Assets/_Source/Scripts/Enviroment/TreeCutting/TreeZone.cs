@@ -20,13 +20,14 @@ public class TreeZone : MiniGames
         _boxCollider = GetComponent<BoxCollider>();
     }
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager, TutorialMananger tutorialMananger)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager, TutorialMananger tutorialMananger , SoundsPlayer soundMananger)
     {
-        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger, soundMananger);
     }
     public void GetDamage(int damage)
     {
         _treeHP -= damage;
+        _soundMananger.PlayWood();
         if (_treeHP <= 0)
         {
             _tutorialMananger.NextTutorialPhase(2);

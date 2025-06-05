@@ -30,9 +30,9 @@ public class BlacksmithZone : MiniGames
     
     private bool _isForging = false;
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger, SoundsPlayer soundMananger)
     {
-        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger, soundMananger);
     }
 
     private void Start()
@@ -81,7 +81,6 @@ public class BlacksmithZone : MiniGames
         _hammer.canAttack = true;
         _panelBlackSmith.SetActive(false);
         _camera.Follow = _blacksmith.transform;
-   
         _blackSmithSword.SetActive(true);
         _blackSmithHammer.SetActive(true);
     }

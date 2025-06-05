@@ -16,9 +16,9 @@ public class Mining : MiniGames
     private bool _isStarted = false;
     private int _hp = 5;
     [Inject]
-    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger)
+    protected override void Construct(ThirdPersonController thirdPersonController, CinemachineVirtualCamera camera, ResourcesMananger manager,  TutorialMananger tutorialMananger, SoundsPlayer soundMananger)
     {
-        base.Construct(thirdPersonController, camera, manager, tutorialMananger);
+        base.Construct(thirdPersonController, camera, manager, tutorialMananger, soundMananger);
     }
     private void Update()
     {
@@ -78,6 +78,7 @@ public class Mining : MiniGames
     public void ButtonClicked()
     {
         _mined += 10;
+        _soundMananger.PlayMining();
         StopAllCoroutines();
         RandomizeButton();
         _scoreText.text = "+" + _mined.ToString();

@@ -1,7 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-
+using Zenject;
 public class Froging : MonoBehaviour
 {
     [SerializeField] private BlacksmithZone _forgeMananger;
@@ -10,7 +10,13 @@ public class Froging : MonoBehaviour
     [SerializeField] private RectTransform _zone;
     [SerializeField] private TextMeshProUGUI _progressText;
     [SerializeField] private GameObject _sucsessMenu;
+    private SoundsPlayer _soundMananger;
     private float _forgeProgress = 0;
+    [Inject]
+    protected void Construct(SoundsPlayer soundMananger)
+    {
+        _soundMananger = soundMananger;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +50,7 @@ public class Froging : MonoBehaviour
     }
     IEnumerator Sucsess()
     {
+        _soundMananger.PlaySemiReady();
         _sucsessMenu.SetActive(true);
         yield return new WaitForSeconds(2);
         _sucsessMenu.SetActive(false);
