@@ -4,7 +4,7 @@ using UnityEngine;
 public class CuttingTreeMiniGame : MonoBehaviour
 {
     [SerializeField] private RectTransform _zone; 
-
+    [SerializeField] private Animator _animator;
     public TreeZone CurrentTree;
     public int Damage;
 
@@ -21,7 +21,7 @@ public class CuttingTreeMiniGame : MonoBehaviour
             print("zone");
             if (Input.GetKey(KeyCode.Mouse0) && CanAttack)
             {
-                
+                _animator.SetTrigger("cut");
                 StartCoroutine(AttackReload());
                 print("Cut!");
                 CurrentTree.GetDamage(Damage);

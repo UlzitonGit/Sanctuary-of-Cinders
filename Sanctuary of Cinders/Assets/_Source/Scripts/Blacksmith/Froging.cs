@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
+
 public class Froging : MonoBehaviour
 {
     [SerializeField] private BlacksmithZone _forgeMananger;
@@ -10,6 +13,7 @@ public class Froging : MonoBehaviour
     [SerializeField] private RectTransform _zone;
     [SerializeField] private TextMeshProUGUI _progressText;
     [SerializeField] private GameObject _sucsessMenu;
+    [SerializeField] private Animator _anim;
     private SoundsPlayer _soundMananger;
     private float _forgeProgress = 0;
     [Inject]
@@ -41,6 +45,7 @@ public class Froging : MonoBehaviour
         {
             _forgeProgress += Time.deltaTime * 10;
             int _progress = (int)_forgeProgress;
+            _anim.SetBool("Fire", true);
             _progressText.text = _progress.ToString() + "%";
             if(_forgeProgress >= 100)
             {
@@ -48,6 +53,15 @@ public class Froging : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Forge"))
+        {
+            _anim.SetBool("Fire", false);
+        }
+    }
+
     IEnumerator Sucsess()
     {
         _soundMananger.PlaySemiReady();

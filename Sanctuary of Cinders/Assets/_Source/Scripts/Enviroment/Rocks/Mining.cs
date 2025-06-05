@@ -12,6 +12,9 @@ public class Mining : MiniGames
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private RectTransform _mineButton;
     [SerializeField] private GameObject _panel;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private Transform _buttonPos;
+    [SerializeField] private Transform _effectPos;
     private int _mined;
     private bool _isStarted = false;
     private int _hp = 5;
@@ -79,6 +82,8 @@ public class Mining : MiniGames
     public void ButtonClicked()
     {
         _mined += 10;
+        _effectPos.position = _buttonPos.position;
+        _anim.SetTrigger("Rock");
         _soundMananger.PlayMining();
         StopAllCoroutines();
         RandomizeButton();

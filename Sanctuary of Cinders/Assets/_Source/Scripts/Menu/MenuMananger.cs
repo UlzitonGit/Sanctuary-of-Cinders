@@ -13,5 +13,10 @@ public class MenuMananger : MonoBehaviour
     {
         SaveSystem.Delete();
         SceneManager.LoadScene(2);
-    } 
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }

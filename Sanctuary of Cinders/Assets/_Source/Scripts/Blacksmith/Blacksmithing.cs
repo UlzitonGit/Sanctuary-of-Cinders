@@ -7,6 +7,7 @@ public class Blacksmithing : MonoBehaviour
 {
     [SerializeField] private BlacksmithZone _forgeMananger;
     [SerializeField] private GameObject _sucsessMenu;
+    [SerializeField] private ParticleSystem _particle;
     private SoundsPlayer _soundMananger;
     private float _forgeProgress = 0;
     private int _hitsToMake = 5;
@@ -26,6 +27,7 @@ public class Blacksmithing : MonoBehaviour
         {
             _hitsToMake--;
             _soundMananger.PlayBlack();
+            _particle.Play();
             transform.localPosition = new Vector3(Random.Range(-0.4f, 0.4f), -3, 0);
             if (_hitsToMake <= 0)
             {
