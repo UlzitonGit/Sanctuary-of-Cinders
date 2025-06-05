@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using Zenject;
 public class TutorialMananger : MonoBehaviour
 {
     public bool IsEndTutorial{private set; get;}
@@ -8,8 +8,14 @@ public class TutorialMananger : MonoBehaviour
     [SerializeField] private GameObject[] _tutorialPanels;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject _tutorial;
+    private ResourcesMananger _resourcesMananger;
     private bool _isTutorialComplited;
     private int _currentTutorialPhase;
+    [Inject]
+    private void Construct(ResourcesMananger resources)
+    {
+        _resourcesMananger = resources;
+    }
     public void HideTutorial()
     {
         Debug.LogWarning("HideTutorial");
@@ -37,6 +43,7 @@ public class TutorialMananger : MonoBehaviour
             return;
         }
         if (phase < _currentTutorialPhase) return;
+        if(phase == 4 && _currentTutorialPhase != 4) _resourcesMananger.AddRice(300); 
         _currentTutorialPhase = phase;
         _tutorialPanels[phase - 1].SetActive(false);
         _tutorialPanels[phase].SetActive(true);

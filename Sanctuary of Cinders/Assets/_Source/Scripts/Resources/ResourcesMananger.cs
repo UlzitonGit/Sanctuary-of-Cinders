@@ -31,7 +31,6 @@ public class ResourcesMananger : MonoBehaviour
     private void Start()
     {
         ShowResources();
-        AddRice(300);
     }
     private void ShowResources()
     {
